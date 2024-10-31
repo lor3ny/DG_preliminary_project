@@ -5,8 +5,10 @@ using UnityEngine;
 public class PlayerComponent : MonoBehaviour
 {
     public float speed = 0;
+    public Transform spawnPoint;
 
     private Rigidbody rb;
+    private LevelManager levelManager;
     private float movementX;
     private float movementY;
     private Vector3 inputVector;
@@ -14,6 +16,7 @@ public class PlayerComponent : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
     }
 
     private void Update()
@@ -59,8 +62,22 @@ public class PlayerComponent : MonoBehaviour
     {
         if (other.CompareTag("Coin"))
         {
-            Debug.Log("hit");
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
+            levelManager.IncreasePoint();
+        }
+        if (other.CompareTag("Enemy"))
+        {
+            Debug.Log("Dead!");
+            levelManager.StartFromSpawn();
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Enemy"))
+        {
+            Debug.Log("Dead!");
+            levelManager.StartFromSpawn();
         }
     }
 }

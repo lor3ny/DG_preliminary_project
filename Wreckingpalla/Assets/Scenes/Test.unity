@@ -1073,6 +1073,7 @@ GameObject:
   - component: {fileID: 794506010}
   - component: {fileID: 794506012}
   - component: {fileID: 794506011}
+  - component: {fileID: 794506013}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -1140,6 +1141,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 794506009}
   m_CullTransparentMesh: 1
+--- !u!114 &794506013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794506009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29af86fc79a958e4d9b49b0edc1afea6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenuUI: {fileID: 794506009}
 --- !u!1001 &805584970
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2573,7 +2587,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1898945653}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 748437987}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1898945653
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,17 +6,23 @@ public class PlayerComponent : MonoBehaviour
 {
     public float speed = 0;
     public Transform spawnPoint;
+    public AudioClip deathSound;
+    public AudioClip walkSound;
+    public AudioClip coinSound;
+    public AudioClip hitSound;
 
     private Rigidbody rb;
     private LevelManager levelManager;
     private float movementX;
     private float movementY;
     private Vector3 inputVector;
+    private AudioSource audioSource;
     int up = 0, right = 0, down = 0, left = 0;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -50,7 +56,6 @@ public class PlayerComponent : MonoBehaviour
 
 
         inputVector = new Vector3(left+right, 0.0f, up+down);
-        //Debug.Log(inputVector);
     }
 
     private void FixedUpdate()
@@ -63,12 +68,24 @@ public class PlayerComponent : MonoBehaviour
         if (other.CompareTag("Coin"))
         {
             other.gameObject.SetActive(false);
+            audioSource.PlayOneShot(coinSound, 0.5f);
             levelManager.IncreasePoint();
         }
         if (other.CompareTag("Enemy"))
         {
             Debug.Log("Dead!");
-            levelManager.StartFromSpawn();
+            Destroy(other.gameObject);
+            levelManager.DecreaseLives();
+            if(levelManager.GetLives() == 0)
+            {
+                audioSource.PlayOneShot(deathSound);
+                levelManager.LevelLost();
+            } else
+            {
+                audioSource.PlayOneShot(hitSound);
+            }
+
+            //levelManager.StartFromSpawn();
         }
     }
 
@@ -77,7 +94,17 @@ public class PlayerComponent : MonoBehaviour
         if (collision.collider.CompareTag("Enemy"))
         {
             Debug.Log("Dead!");
-            levelManager.StartFromSpawn();
+            levelManager.DecreaseLives();
+            if (levelManager.GetLives() == 0)
+            {
+                audioSource.PlayOneShot(deathSound);
+                levelManager.LevelLost();
+            }
+            else
+            {
+                audioSource.PlayOneShot(hitSound);
+            }
+            //levelManager.StartFromSpawn();
         }
     }
 }

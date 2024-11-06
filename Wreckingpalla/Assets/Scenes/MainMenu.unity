@@ -484,7 +484,7 @@ GameObject:
   - component: {fileID: 876723065}
   - component: {fileID: 876723064}
   m_Layer: 5
-  m_Name: Volume
+  m_Name: VolumeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -497,16 +497,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 876723062}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.96879303, y: 0.95287985, z: 0.9528799}
+  m_LocalRotation: {x: 0, y: 0.0020426535, z: 0, w: 0.9999979}
+  m_LocalPosition: {x: 0, y: 0, z: -0.1593265}
+  m_LocalScale: {x: 0.33057725, y: -0.33239612, z: 0.95284915}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1205112642}
+  m_Father: {fileID: 1248454355}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 64, y: 116}
+  m_AnchoredPosition: {x: 13.307537, y: -39.41815}
   m_SizeDelta: {x: 532.022, y: 112.727}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &876723064
@@ -1294,7 +1294,6 @@ RectTransform:
   - {fileID: 1116651189}
   - {fileID: 1665688662}
   - {fileID: 1248454355}
-  - {fileID: 876723063}
   m_Father: {fileID: 1434957136}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1446,7 +1445,7 @@ GameObject:
   - component: {fileID: 1248454355}
   - component: {fileID: 1248454356}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: VolumeSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1467,6 +1466,7 @@ RectTransform:
   - {fileID: 1923770794}
   - {fileID: 240254318}
   - {fileID: 1982454357}
+  - {fileID: 876723063}
   m_Father: {fileID: 1205112642}
   m_LocalEulerAnglesHint: {x: 0, y: -0.234, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1524,7 +1524,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1434957137}
+        m_TargetAssemblyTypeName: SettingMenu, Assembly-CSharp
+        m_MethodName: SetVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1434957132
 GameObject:
   m_ObjectHideFlags: 0
@@ -1537,6 +1549,7 @@ GameObject:
   - component: {fileID: 1434957135}
   - component: {fileID: 1434957134}
   - component: {fileID: 1434957133}
+  - component: {fileID: 1434957137}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1629,6 +1642,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1434957137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434957132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eae0e41756d9f7f48a8416d485100194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: d7a2e0eecec1b3a4aa072d5c50844b9d, type: 2}
 --- !u!1 &1538333450
 GameObject:
   m_ObjectHideFlags: 0

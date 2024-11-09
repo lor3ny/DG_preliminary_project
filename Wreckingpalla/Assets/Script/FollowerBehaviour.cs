@@ -14,6 +14,7 @@ public class FollowerBehaviour : MonoBehaviour
     private Transform pl;
     private Rigidbody rb;
     private int layerMask;
+    private Vector3 startPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class FollowerBehaviour : MonoBehaviour
         pl = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         rb = GetComponent<Rigidbody>();
         layerMask = ~LayerMask.GetMask("Coins");
+        startPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -42,6 +44,14 @@ public class FollowerBehaviour : MonoBehaviour
             {
                 isSeen = false;
             }
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            transform.position = startPosition;
         }
     }
 

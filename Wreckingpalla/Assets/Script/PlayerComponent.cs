@@ -12,6 +12,7 @@ public class PlayerComponent : MonoBehaviour
     public AudioClip hitSound;
 
     private Rigidbody rb;
+    private Animator anim;
     private LevelManager levelManager;
     private float movementX;
     private float movementY;
@@ -23,12 +24,45 @@ public class PlayerComponent : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
         audioSource = GetComponent<AudioSource>();
+        anim = gameObject.GetComponentInChildren<Animator>();
     }
 
     private void Update()
     {
+        // Walk
+        if(rb.velocity.magnitude > 0.1)
+        {
+            anim.SetBool("Walk_Anim", true);
+        } else
+        {
+            anim.SetBool("Walk_Anim", false);
+        }
 
-        //int ciao = Input.GetKeyDown(KeyCode.W);
+        // Roll
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (anim.GetBool("Roll_Anim"))
+            {
+                anim.SetBool("Roll_Anim", false);
+            }
+            else
+            {
+                anim.SetBool("Roll_Anim", true);
+            }
+        }
+
+        // Close
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            if (!anim.GetBool("Open_Anim"))
+            {
+                anim.SetBool("Open_Anim", true);
+            }
+            else
+            {
+                anim.SetBool("Open_Anim", false);
+            }
+        }
 
         if (Input.GetKeyDown(KeyCode.W))
             up = 1;
@@ -56,12 +90,9 @@ public class PlayerComponent : MonoBehaviour
 
 
         inputVector = new Vector3(left+right, 0.0f, up+down);
+        rb.velocity = inputVector * speed;
     }
 
-    private void FixedUpdate()
-    {
-        rb.AddForce(inputVector * speed);
-    }
 
     private void OnTriggerEnter(Collider other)
     {

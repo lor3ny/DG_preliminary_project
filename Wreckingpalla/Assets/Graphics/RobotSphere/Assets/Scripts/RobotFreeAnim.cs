@@ -25,6 +25,7 @@ public class RobotFreeAnim : MonoBehaviour {
 	void CheckKey()
 	{
 		// Walk
+		/*
 		if (Input.GetKey(KeyCode.W))
 		{
 			anim.SetBool("Walk_Anim", true);
@@ -33,8 +34,10 @@ public class RobotFreeAnim : MonoBehaviour {
 		{
 			anim.SetBool("Walk_Anim", false);
 		}
+		*/
 
 		// Rotate Left
+		/*
 		if (Input.GetKey(KeyCode.A))
 		{
 			rot[1] -= rotSpeed * Time.fixedDeltaTime;
@@ -45,32 +48,8 @@ public class RobotFreeAnim : MonoBehaviour {
 		{
 			rot[1] += rotSpeed * Time.fixedDeltaTime;
 		}
+		*/
 
-		// Roll
-		if (Input.GetKeyDown(KeyCode.Space))
-		{
-			if (anim.GetBool("Roll_Anim"))
-			{
-				anim.SetBool("Roll_Anim", false);
-			}
-			else
-			{
-				anim.SetBool("Roll_Anim", true);
-			}
-		}
-
-		// Close
-		if (Input.GetKeyDown(KeyCode.LeftControl))
-		{
-			if (!anim.GetBool("Open_Anim"))
-			{
-				anim.SetBool("Open_Anim", true);
-			}
-			else
-			{
-				anim.SetBool("Open_Anim", false);
-			}
-		}
 	}
 
 }

@@ -7,6 +7,9 @@ TagManager:
   - Coin
   - Enemy
   - Life
+  - Post Processing
+  - Bullet
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -15,7 +18,7 @@ TagManager:
   - Water
   - UI
   - Coins
-  - 
+  - Post Processing
   - 
   - 
   - 

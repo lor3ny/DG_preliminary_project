@@ -84,8 +84,21 @@ public class PlayerComponent : MonoBehaviour
             {
                 audioSource.PlayOneShot(hitSound, 0.6f);
             }
-
-            //levelManager.StartFromSpawn();
+        }
+        if (other.CompareTag("Bullet"))
+        {
+            Debug.Log("Dead!");
+            other.GetComponent<Autodestruction>().Autodestroy();
+            levelManager.DecreaseLives();
+            if (levelManager.GetLives() == 0)
+            {
+                audioSource.PlayOneShot(deathSound, 0.3f);
+                levelManager.LevelLost();
+            }
+            else
+            {
+                audioSource.PlayOneShot(hitSound, 0.6f);
+            }
         }
     }
 

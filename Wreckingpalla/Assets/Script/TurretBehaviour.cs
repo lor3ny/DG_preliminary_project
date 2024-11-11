@@ -10,11 +10,14 @@ public class TurretBehaviour : MonoBehaviour
     private Transform pl;
     private Rigidbody rb;
     private int layerMask;
+    private AudioSource audioSource;
 
     [SerializeField]
     private GameObject bullet;
     [SerializeField]
     private float shotPower;
+    [SerializeField]
+    private AudioClip audioClip;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +26,7 @@ public class TurretBehaviour : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         layerMask = ~LayerMask.GetMask("Coins");
         StartCoroutine(WaitAndShoot(1.5f));
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -61,9 +65,10 @@ public class TurretBehaviour : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject bull =Instantiate(bullet);
+        GameObject bull = Instantiate(bullet);
         bull.transform.position = transform.position;
         bull.GetComponent<Rigidbody>().velocity = playerPosition.normalized * shotPower;
+        audioSource.PlayOneShot(audioClip, 0.2f);
     }
 
 }

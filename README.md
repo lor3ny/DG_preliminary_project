@@ -1,5 +1,6 @@
 # RockJourney
 **Group number 3**
+
 Noemi Messori, student no. _202401607_, email _up202401607@edu.fe.up.pt_   
 Lorenzo Piarulli, student no. _202401433_, email _up202401433@edu.fe.up.pt_
 

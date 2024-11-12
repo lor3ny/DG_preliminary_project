@@ -1,8 +1,12 @@
 # RockJourney
 **Group number 3**
 
-Noemi Messori, student no. _202401607_, email _up202401607@edu.fe.up.pt_   
-Lorenzo Piarulli, student no. _202401433_, email _up202401433@edu.fe.up.pt_
+- Noemi Messori, student no. _202401607_, email _up202401607@edu.fe.up.pt_   
+- Lorenzo Piarulli, student no. _202401433_, email _up202401433@edu.fe.up.pt_
+
+## YouTube Video
+
+[YouTube Video](https://youtu.be/ibwuZbDkA0E)
 
 ## Instructions on how to play the game:
 The game is provided as a Windows executable. To start playing, simply double-click the executable file. 
